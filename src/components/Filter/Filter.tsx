@@ -7,12 +7,16 @@ import { extractArrayOptions } from "../../utils";
 import './Filter.css';
 
 export function Filter(props: FilterPropsType) {
-	const {characterData, filterName, filterType, filterGender, filterSpecies, handleSubmit, handleReset, handleChange, handleChangeType, handleChangeGender, handleChangeSpecies} = props;
+	const {characterData, filterName, filterType, filterStatus, filterGender, filterSpecies, handleSubmit, handleReset, handleChange, handleChangeType, handleChangeStatus, handleChangeGender, handleChangeSpecies} = props;
 	const [isMoreFiltersChecked, setMoreFiltersChecked] = useState<boolean>(false);
 
 	const handleCheck = () => {
 		setMoreFiltersChecked(!isMoreFiltersChecked);
 	}
+
+	const statusOptions = useMemo(() => {
+		return extractArrayOptions(characterData, "status")
+	}, [characterData])
 
 	const genderOptions = useMemo(() => {
 		return extractArrayOptions(characterData, "gender")
@@ -21,6 +25,7 @@ export function Filter(props: FilterPropsType) {
 	const speciesOptions = useMemo(() => {
 		return extractArrayOptions(characterData, "species")
 	}, [characterData])
+
 
 	const selectOptions = useMemo(() => {
 		return extractArrayOptions(characterData, "type")
@@ -68,6 +73,22 @@ export function Filter(props: FilterPropsType) {
 											  isMulti
 											  value={filterType}
 											  onChange={handleChangeType}/>}
+				</div>
+				<div className="filter-group">
+					<p className="filter-group__title">Status</p>
+					<div className="chips">
+						{
+							statusOptions.map((item:string) => 
+								<Checkbox id={`${item}-status`}
+										  key={`${item}-status`}
+										  item = {item}
+										  filterName={`${item}-status`} 
+										  isChecked={filterStatus[item]}
+										  type="chips"
+										  onChange={handleChangeStatus}/>
+							)
+						}
+					</div>
 				</div>
 				<div className="filter-group">
 					<p className="filter-group__title">Gender</p>

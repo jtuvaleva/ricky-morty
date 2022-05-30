@@ -34,12 +34,14 @@ export interface FilterPropsType {
   characterData:CharacterArray[], 
   filterName: any, 
   filterType: any, 
+  filterStatus:any,
   filterGender:any, 
   filterSpecies:any, 
   handleSubmit:any, 
   handleReset:any, 
   handleChange:any, 
   handleChangeType:any, 
+  handleChangeStatus:any,
 	handleChangeGender:any, 
   handleChangeSpecies:any
 }

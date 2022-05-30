@@ -1,6 +1,7 @@
 {
   "name": "rick-and-morti",
   "version": "0.1.0",
+  "homepage": "https://jtuvaleva.github.io/ricky-morty",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -44,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }

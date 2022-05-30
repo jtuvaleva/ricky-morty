@@ -13,6 +13,7 @@ function App() {
   const [isLoading, setLoading] = useState<boolean>(false);
   const [filterName, setFilterName] = useState<MultiValue<{value:string, label:string}>>([]);
   const [filterType, setFilterType] = useState<MultiValue<{value:string, label:string}>>([]);
+  const [filterStatus, setFilterStatus] = useState({"Alive": false});
 	const [filterGender, setFilterGender] = useState({"Male": false});
 	const [filterSpecies, setFilterSpecies] = useState({"Human": false});
 
@@ -35,6 +36,13 @@ function App() {
     setFilterType(value);
 	};
 
+  const handleChangeStatus = (evt: ChangeEvent<HTMLInputElement>) => {
+		setFilterStatus({
+			...filterStatus,
+			[evt.target.name]: evt.target.checked 
+		})
+	}
+
   const handleChangeGender = (evt: ChangeEvent<HTMLInputElement>) => {
 		setFilterGender({
 			...filterGender,
@@ -51,6 +59,7 @@ function App() {
 
   const handleSubmit = (evt: SubmitEvent) => {
     let tmpFilter = [...characterData];
+    const status = Object.keys(Object.fromEntries(Object.entries(filterStatus).filter(value => value[1] === true)));
     const gender = Object.keys(Object.fromEntries(Object.entries(filterGender).filter(value => value[1] === true)));
     const speciesArray = Object.keys(Object.fromEntries(Object.entries(filterSpecies).filter(value => value[1] === true)));
     const nameArray = filterName.map(r => r.label);
@@ -62,6 +71,10 @@ function App() {
 
     if (typeArray.length > 0) {
       tmpFilter = tmpFilter.filter((item: {type:string}) =>  typeArray.includes(item.type));
+    }
+
+    if (status.length > 0) {
+      tmpFilter = tmpFilter.filter((item: {status:string}) => status.includes(item.status))
     }
 
     if (gender.length > 0) {
@@ -78,8 +91,9 @@ function App() {
   const handleReset = (evt: SubmitEvent) => {
     setFilterName([]);
     setFilterType([]);
+    setFilterStatus({"Alive": false});
     setFilterGender({"Male": false});
-    setFilterSpecies({"Human": false})
+    setFilterSpecies({"Human": false});
     setFilteredData(characterData);
   }
 
@@ -92,12 +106,14 @@ function App() {
               characterData={characterData}
               filterName={filterName}
               filterType={filterType}
+              filterStatus={filterStatus}
               filterGender={filterGender}
               filterSpecies={filterSpecies}
               handleSubmit={handleSubmit}
               handleReset={handleReset}
               handleChange={handleChangeName}
               handleChangeType={handleChangeType}
+              handleChangeStatus={handleChangeStatus}
               handleChangeGender={handleChangeGender}
               handleChangeSpecies={handleChangeSpecies}
              />
