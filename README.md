@@ -1,5 +1,5 @@
 
-The app let browse all character from Rick and Morty sitcom. Also you can filter all characters by name, status, species, type and gender.
+The app helps you browse all character from Rick and Morty sitcom. Also you can filter all characters by name, status, species, type and gender. 
 
 You can explore Rick and Morty through [https://jtuvaleva.github.io/ricky-morty](https://jtuvaleva.github.io/ricky-morty) or you can clone the repository an then run:
 ### `npm install` 
