@@ -1,0 +1,76 @@
+.filter {
+	position: relative;
+	width: 70%;
+	margin: 1% auto 5%;
+}
+
+.filter__additional {
+	width: 100%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	font-weight: 500;
+}
+  
+.filter-group {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-bottom: 2%;
+}
+
+.filter-group__title {
+	margin: 0;
+	padding-right: 2rem;
+	text-align: left;
+	font-weight: bold;
+	color: #62a4ab;
+	min-width: 10%;
+  }
+  
+.filter-search {
+	position: relative;
+	margin: 0 auto;
+	width: 80%;
+}
+  
+.filter__group {
+	list-style: none;
+}
+
+.filter__group li {
+	padding: 0;
+	margin: 0;
+	text-align: left;
+}
+
+.buttons-area {
+	display: flex;
+	justify-content: flex-start;
+}
+  
+.buttons-area button {
+	background-color: #62a4ab;
+	min-width: 120px;
+	color: #fff;
+	border: none;
+	box-shadow: none;
+	padding: 0.5em 1em;
+	border-radius: 5px;
+	font-size: 1em;
+	margin: 0 1% 0 0;
+	opacity: 1;
+	transition: opacity .7s ease;
+}
+  
+.buttons-area button:last-of-type {
+	background-color: #62a4ab10;
+	border: 2px solid #62a4ab;
+	color: #62a4ab;
+}
+  
+button:hover {
+	opacity: 0.6;
+}
